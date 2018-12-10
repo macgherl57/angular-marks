@@ -1,0 +1,32 @@
+<button class="btn btn-primary" (click)="doSignout()">Esci</button>
+<form #paramForm="ngForm" (ngSubmit)="getVoti(paramForm.value)">
+  <div class="form-group">
+    <label for="as">AS:</label>
+    <input type="text" name="as"  class="form-control" ngModel>
+  </div>
+
+  <div class="form-group">
+    <label for="quad">QUAD:</label>
+    <input type="text" name="quad"  class="form-control" ngModel>
+  </div>
+
+  <div class="form-group">
+       <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+
+</form>
+
+<div *ngIf="submitted">
+<table class="table">
+<tr>
+  <th>Materia</th>
+  <th>Docente</th>
+  <th>Voto</th>
+</tr>
+<tr *ngFor="let voto of voti"> 
+  <td>{{voto.materia}}</td>
+  <td>{{voto.docente}}</td>
+  <td>{{voto.voto}}</td>
+</tr>
+</table>
+</div>
