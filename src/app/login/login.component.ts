@@ -11,6 +11,9 @@ export class LoginComponent implements OnInit {
   
   private validation: Array<Object> = [];
   private studente_id: Number;
+  private error: Boolean = false;
+  private errorMsg: String;
+
   constructor(private apiService: ApiService, private sessionService: AuthsessService,
               private router: Router) { }
 
@@ -24,9 +27,14 @@ export class LoginComponent implements OnInit {
       if (this.studente_id > 0) {
         this.sessionService.allowed = 'true';
         this.sessionService.studente_id = this.studente_id;
+        this.sessionService.cognome = loginForm.cognome;
+        this.sessionService.nome = loginForm.nome;
         //console.log('Printing parameters to session: ' + this.sessionService.studente_id + '; ' + this.sessionService.allowed);
         //return;
         this.router.navigate(['list', this.studente_id]);
+      } else {
+        this.error = true;
+        this.errorMsg = "Studente non trovato o password errata. Riprova!";
       }
     });
   }

@@ -1,23 +1,29 @@
-<button class="btn btn-primary" (click)="doSignout()">Esci</button>
 <form #paramForm="ngForm" (ngSubmit)="getVoti(paramForm.value)">
   <div class="form-group">
     <label for="as">AS:</label>
-    <input type="text" name="as"  class="form-control" ngModel>
+    <!-- <input type="text" name="as"  class="form-control" ngModel> -->
+    <select class="form-control" name="as" id="as" [(ngModel)]="defaultValue">
+      <option *ngFor="let anno of anni" [ngValue]="anno">{{anno}}</option>
+    </select>
   </div>
-
   <div class="form-group">
     <label for="quad">QUAD:</label>
-    <input type="text" name="quad"  class="form-control" ngModel>
+    <!-- <input type="text" name="quad"  class="form-control" ngModel> -->
+    <select class="form-control" name="quad" id="quad" ngModel>
+      <option value="1">1° Trimestre</option>
+      <option value="2">2° Pentamestre</option>
+    </select>
   </div>
-
   <div class="form-group">
        <button type="submit" class="btn btn-primary">Submit</button>
   </div>
-
 </form>
 
 <div *ngIf="submitted">
-<table class="table">
+<div class="alert alert-info">
+  Voti di {{nome}} {{cognome}}
+</div>
+  <table class="table">
 <tr>
   <th>Materia</th>
   <th>Docente</th>
