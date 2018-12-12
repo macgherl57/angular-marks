@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   
   private validation: Array<Object> = [];
   private studente_id: Number;
-  private error: Boolean = false;
+  public error: Boolean = false;
   private errorMsg: String;
 
   constructor(private apiService: ApiService, private sessionService: AuthsessService,

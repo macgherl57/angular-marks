@@ -9,14 +9,14 @@ import { AuthsessService } from '../authsess.service';
 })
 export class VotilistComponent implements OnInit {
   private voti: Array<Object> = [];
-  private submitted: Boolean = false;
+  public submitted: Boolean = false;
   private cognome: String;
   private nome: String;
-  private anni: Array<String>;
-  private defaultValue: String;
-  private defaultValue1: Object;
+  public anni: Array<String>;
+  public defaultValue: String;
+  public defaultValue1: Object;
   private classe: String;
-  private quad: Array<Object>;
+  public quad: Array<Object>;
 
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,

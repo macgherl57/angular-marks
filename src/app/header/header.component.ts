@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   
-  private is_signedin: Boolean;
+  public is_signedin: Boolean;
   title = 'Liceo Berchet - Pagella';
 
   constructor(private apiService: ApiService, private _route: Router) {
