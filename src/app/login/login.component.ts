@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
       this.studente_id = this .validation[0]["studente_id"];
       // console.log('studente_id: ' + this.validation[0]["studente_id"]);
       if (this.studente_id > 0) {
-        this.sessionService.allowed = 'true';
+        this.sessionService.classe = this.validation[0]["classe"];
         this.sessionService.studente_id = this.studente_id;
         this.sessionService.cognome = loginForm.cognome;
         this.sessionService.nome = loginForm.nome;
         //console.log('Printing parameters to session: ' + this.sessionService.studente_id + '; ' + this.sessionService.allowed);
-        //return;
+        this.apiService.isUserLoggedIn.next(true);
         this.router.navigate(['list', this.studente_id]);
       } else {
         this.error = true;

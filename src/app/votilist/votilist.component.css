@@ -1,0 +1,8 @@
+.row {
+    background: #d1ecf1;
+    margin-top: 10px;
+}
+.col-sm-4 {
+    border: solid 1px #bee5eb;
+    padding: 5px;
+}

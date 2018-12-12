@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthsessService } from '../authsess.service';
 @Component({
   selector: 'app-votilist',
@@ -9,21 +9,25 @@ import { AuthsessService } from '../authsess.service';
 })
 export class VotilistComponent implements OnInit {
   private voti: Array<Object> = [];
-  submitted: Boolean = false;
+  private submitted: Boolean = false;
   private cognome: String;
   private nome: String;
   private anni: Array<String>;
   private defaultValue: String;
+  private defaultValue1: Object;
+  private classe: String;
+  private quad: Array<Object>;
 
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
-              private _route: Router,
               private authsessService: AuthsessService
               ) { }
 
   ngOnInit() {
     this.anni = ['2016_2017','2017_2018'];
     this.defaultValue = this.anni[1];
+    this.quad = [ {val:1, n:"1° Trimestre"}, {val:2, n: "2° Pentamestre"} ];
+    this.defaultValue1 = this.quad[1]["val"];
   }
   
   public getVoti(paramForm) {
@@ -33,6 +37,7 @@ export class VotilistComponent implements OnInit {
       this.submitted = true;
       this.cognome = this.authsessService.cognome;
       this.nome = this.authsessService.nome;
+      this.classe = this.authsessService.classe;
       // console.log(data);
     });
   }

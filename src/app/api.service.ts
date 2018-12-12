@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthsessService } from './authsess.service';
+import { BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,6 +10,7 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient, private sessionService: AuthsessService) { }
   API_URL = 'https://berchet.regonline.it/didattica/stud_free/angular_json';
+  public isUserLoggedIn = new BehaviorSubject<Boolean>(false);
   public getVoti(paramForm) {
     // console.log(paramForm.studente_id);
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -18,7 +21,7 @@ export class ApiService {
     return this.httpClient.post(`${this.API_URL}/password.html`, loginForm);
   }
   public isSignedIn() {
-    return !!this.sessionService.allowed;
+    return !!this.sessionService.classe;
   }
   public doSignOut() {
     this.sessionService.destroy();

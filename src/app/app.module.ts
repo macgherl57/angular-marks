@@ -7,13 +7,15 @@ import { VotilistComponent } from './votilist/votilist.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VotilistComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

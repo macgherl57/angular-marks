@@ -9,9 +9,8 @@
   <div class="form-group">
     <label for="quad">QUAD:</label>
     <!-- <input type="text" name="quad"  class="form-control" ngModel> -->
-    <select class="form-control" name="quad" id="quad" ngModel>
-      <option value="1">1° Trimestre</option>
-      <option value="2">2° Pentamestre</option>
+    <select class="form-control" name="quad" id="quad" [(ngModel)]="defaultValue1">
+      <option *ngFor="let q of quad" [ngValue]="q.val">{{q.n}}</option>
     </select>
   </div>
   <div class="form-group">
@@ -20,10 +19,11 @@
 </form>
 
 <div *ngIf="submitted">
-<div class="alert alert-info">
-  Voti di {{nome}} {{cognome}}
+<div class="alert alert-dark">
+  Voti di {{nome}} {{cognome}} - classe {{classe}}
 </div>
-  <table class="table">
+<!--
+<table class="table">
 <tr>
   <th>Materia</th>
   <th>Docente</th>
@@ -35,4 +35,15 @@
   <td>{{voto.voto}}</td>
 </tr>
 </table>
+-->
+<div class="row">
+  <div class="col-sm-4"><b>Materia</b></div>
+  <div class="col-sm-4"><b>Voto</b></div>
+  <div class="col-sm-4"><b>Docente</b></div>
+</div>
+<div class="row" *ngFor="let voto of voti">
+  <div class="col-sm-4">{{voto.materia}}</div>
+  <div class="col-sm-4">{{voto.voto}}</div>
+  <div class="col-sm-4">{{voto.docente.length == 0 ? '==' : voto.docente}}</div>
+</div>
 </div>
