@@ -1,14 +1,15 @@
+<div class="alert alert-danger" role="alert" *ngIf="error">
+  {{ errorMsg }}
+</div>
 <form #paramForm="ngForm" (ngSubmit)="getVoti(paramForm.value)">
   <div class="form-group">
     <label for="as">AS:</label>
-    <!-- <input type="text" name="as"  class="form-control" ngModel> -->
     <select class="form-control" name="as" id="as" [(ngModel)]="defaultValue">
-      <option *ngFor="let anno of anni" [ngValue]="anno">{{anno}}</option>
+      <option *ngFor="let anno of anni" [ngValue]="anno.val">{{anno.n}}</option>
     </select>
   </div>
   <div class="form-group">
     <label for="quad">QUAD:</label>
-    <!-- <input type="text" name="quad"  class="form-control" ngModel> -->
     <select class="form-control" name="quad" id="quad" [(ngModel)]="defaultValue1">
       <option *ngFor="let q of quad" [ngValue]="q.val">{{q.n}}</option>
     </select>
@@ -20,22 +21,8 @@
 
 <div *ngIf="submitted">
 <div class="alert alert-dark">
-  Voti di {{nome}} {{cognome}} - classe {{classe}}
+  Voti di {{nome}} {{cognome}} - classe {{classe}} - a.s. {{paramForm.value.as}}
 </div>
-<!--
-<table class="table">
-<tr>
-  <th>Materia</th>
-  <th>Docente</th>
-  <th>Voto</th>
-</tr>
-<tr *ngFor="let voto of voti"> 
-  <td>{{voto.materia}}</td>
-  <td>{{voto.docente}}</td>
-  <td>{{voto.voto}}</td>
-</tr>
-</table>
--->
 <div class="row">
   <div class="col-sm-4"><b>Materia</b></div>
   <div class="col-sm-4"><b>Voto</b></div>

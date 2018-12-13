@@ -21,7 +21,7 @@ export class ApiService {
     return this.httpClient.post(`${this.API_URL}/password.html`, loginForm);
   }
   public isSignedIn() {
-    return !!this.sessionService.classe;
+    return !!this.sessionService.studente_id;
   }
   public doSignOut() {
     this.sessionService.destroy();
